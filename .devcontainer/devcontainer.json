@@ -3,7 +3,7 @@
 {
 	"name": "Ubuntu",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"image": "ghcr.io/hoanganhduc/vnu-hus-mat3508:latest",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -12,7 +12,7 @@
 	// "forwardPorts": [],
 
 	// Use 'updateContentCommand' to run commands when creating the container.
-	"updateContentCommand": "bash .devcontainer/setup.sh",
+	"updateContentCommand": "",
 
 	// Configure tool-specific properties.
 	"customizations": {
