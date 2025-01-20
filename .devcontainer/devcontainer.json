@@ -22,6 +22,8 @@
 				"markdown.preview.fontSize": 16,
 				"terminal.integrated.fontSize": 16,
 				"editor.fontSize": 16,
+				"editor.wordWrap": "on",
+				"files.eol": "\n",
 				"git.autofetch": true,
 				"git.enableSmartCommit": true,
 				"terminal.integrated.cwd": "${fileDirname}",
@@ -33,7 +35,8 @@
 			},
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"jeff-hykin.better-prolog-syntax"
+				"jeff-hykin.better-prolog-syntax",
+				"GitHub.copilot"
 			]
 		}
 	}
