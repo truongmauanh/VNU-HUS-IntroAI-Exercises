@@ -1,0 +1,58 @@
+import itertools
+
+# Một literal: có dạng (var, is_positive)
+# var: tên biến (string), is_positive: True/False
+
+def eval_literal(literal, valuation):
+    var, is_positive = literal
+    value = valuation[var]
+    return value if is_positive else not value
+
+# Một clause là list/set literal, công thức CNF là list/set clause
+def eval_clause(clause, valuation):
+    return any(eval_literal(lit, valuation) for lit in clause)
+
+def eval_formula(formula, valuation):
+    return all(eval_clause(clause, valuation) for clause in formula)
+
+def truth_table(formula):
+    # lấy tất cả biến trong công thức
+    variables = sorted({var for clause in formula for (var, _) in clause})
+    n = len(variables)
+    
+    satisfiable = False
+    always_true = True
+    models = []
+    
+    for values in itertools.product([False, True], repeat=n):
+        valuation = dict(zip(variables, values))
+        result = eval_formula(formula, valuation)
+        if result:
+            satisfiable = True
+            models.append(valuation.copy())
+        else:
+            always_true = False
+    
+    if not satisfiable:
+        status = "Unsatisfiable"
+    elif always_true:
+        status = "Tautology (always true)"
+    else:
+        status = "Satisfiable (true for some interpretations)"
+    
+    return status, len(models), models
+
+# ================== Ví dụ ==================
+# Công thức: (A ∨ ¬B) ∧ (¬A ∨ B)
+# Biểu diễn CNF: [[("A", True), ("B", False)], [("A", False), ("B", True)]]
+formula = [
+    [("A", True), ("B", False)],
+    [("A", False), ("B", True)]
+]
+
+status, count, models = truth_table(formula)
+print("Status:", status)
+print("Number of models:", count)
+print("Models:")
+for m in models:
+    print(m)
