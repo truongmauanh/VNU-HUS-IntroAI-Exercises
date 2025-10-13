@@ -1,1 +1,7 @@
 % Create a solution for Exercise 3.9(a), page 64
+a;b<-.
+<-a,b.
+b;c<-.
+<-b,c.
+c;a<-.
+<-c,a.
